@@ -57,6 +57,8 @@ public class SecurityConfig {
 
                         // EVENTOS
                         .requestMatchers("/eventos/all-active").permitAll()
+                        .requestMatchers("/eventos/all-ordered").permitAll()
+                        .requestMatchers("/eventos/").permitAll()
                         .requestMatchers("/eventos/all").hasAuthority("ADMIN")
                         .requestMatchers("/eventos/save").hasAuthority("ADMIN")
                         .requestMatchers("/eventos/update").hasAuthority("ADMIN")

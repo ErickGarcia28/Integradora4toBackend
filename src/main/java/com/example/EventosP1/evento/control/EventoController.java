@@ -23,8 +23,18 @@ public class EventoController {
         return eventoService.findAll();
     }
 
+    @GetMapping("/all-ordered")
+    public ResponseEntity<Message> getAllOrderedEvents() {
+        return eventoService.findOrderByFechaAsc();
+    }
+
+    @GetMapping("/all-by-user-id/{userId}")
+    public ResponseEntity<Message> getAllByUserId(@PathVariable long userId) {
+        return eventoService.findAllByUsuarioId(userId);
+    }
+
     @GetMapping("/{id}")
-    public ResponseEntity<Message> getEventById(@PathVariable int id) {
+    public ResponseEntity<Message> getEventById(@PathVariable long id) {
         return eventoService.findById(id);
     }
 

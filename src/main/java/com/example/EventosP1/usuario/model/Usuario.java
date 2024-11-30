@@ -1,8 +1,12 @@
 package com.example.EventosP1.usuario.model;
 
+import com.example.EventosP1.evento.model.Evento;
+import com.example.EventosP1.participante.model.Participante;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
@@ -41,6 +45,10 @@ public class Usuario {
     @Column(name = "code_expiration", columnDefinition = "TIMESTAMP")
     private LocalDateTime codeExpiration;
 
+    @OneToMany(mappedBy = "usuario")
+    @JsonIgnore
+    private List<Evento> eventos;
+
     // Constructores
     public Usuario() {}
 
@@ -61,6 +69,13 @@ public class Usuario {
         this.correoElectronico = correoElectronico;
         this.telefono = telefono;
         this.status = true;
+    }
+
+    public List<Evento> getEventos() {
+        return eventos;
+    }
+    public void setEventos(List<Evento> eventos) {
+        this.eventos = eventos;
     }
 
     // Getters y Setters

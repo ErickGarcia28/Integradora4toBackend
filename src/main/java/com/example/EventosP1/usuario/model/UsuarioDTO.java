@@ -65,6 +65,8 @@ public class UsuarioDTO {
     public boolean isStatus() { return status; }
     public void setStatus(boolean status) { this.status = status; }
 
+
+
     // Interfaces para grupos de validación
     public interface Register {}
     public interface Modify {}

@@ -3,6 +3,8 @@ package com.example.EventosP1.evento.control;
 import com.example.EventosP1.categoria.model.Categoria;
 import com.example.EventosP1.categoria.model.CategoriaRepository;
 import com.example.EventosP1.evento.model.*;
+import com.example.EventosP1.usuario.model.Usuario;
+import com.example.EventosP1.usuario.model.UsuarioRepository;
 import com.example.EventosP1.utils.Message;
 import com.example.EventosP1.utils.TypesResponse;
 import org.slf4j.Logger;
@@ -24,11 +26,13 @@ public class EventoService {
 
     private final EventoRepository eventoRepository;
     private final CategoriaRepository categoriaRepository;
+    private final UsuarioRepository usuarioRepository;
 
     @Autowired
-    public EventoService(EventoRepository eventoRepository, CategoriaRepository categoriaRepository) {
+    public EventoService(EventoRepository eventoRepository, CategoriaRepository categoriaRepository, UsuarioRepository  usuarioRepository) {
         this.eventoRepository = eventoRepository;
         this.categoriaRepository = categoriaRepository;
+        this.usuarioRepository = usuarioRepository;
     }
 
     // CONSULTAR EVENTOS
@@ -37,6 +41,32 @@ public class EventoService {
         logger.info("Iniciando búsqueda de todos los eventos.");
         List<Evento> eventos = eventoRepository.findAll();
         logger.info("Se encontraron {} eventos.", eventos.size());
+        return new ResponseEntity<>(new Message(eventos, "Listado de eventos", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> findAllByUsuarioId(Long usuarioId) {
+        logger.info("Iniciando búsqueda de eventos para el usuario con ID: {}", usuarioId);
+
+        // Obtener los eventos del usuario
+        List<Evento> eventos = eventoRepository.findAllByUsuarioId(usuarioId);
+
+        if (eventos.isEmpty()) {
+            logger.warn("No se encontraron eventos para el usuario con ID: {}", usuarioId);
+            return new ResponseEntity<>(new Message("No se encontraron eventos para el usuario", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
+
+        logger.info("Se encontraron {} eventos para el usuario con ID: {}", eventos.size(), usuarioId);
+        return new ResponseEntity<>(new Message(eventos, "Eventos encontrados para el usuario", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
+
+    // CONSULTAR EVENTOS
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> findOrderByFechaAsc() {
+        logger.info("Iniciando búsqueda de todos los eventos ordenados.");
+        List<Evento> eventos = eventoRepository.findAllByStatusIsTrueOrderByFechaAsc();
+        logger.info("Se encontraron {} eventos ordenados.", eventos.size());
         return new ResponseEntity<>(new Message(eventos, "Listado de eventos", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
@@ -96,6 +126,12 @@ public class EventoService {
         if (dto.getHora() == null) {
             logger.warn("La hora no se ha proporcionado, se asignará la hora predeterminada.");
         }
+
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(dto.getUsuarioId());
+        if (!usuarioOptional.isPresent()) {
+            return new ResponseEntity<>(new Message("El usuario no existe", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+
         // Crear el evento con la hora
         Evento evento = new Evento(
                 dto.getNombre(),
@@ -103,10 +139,9 @@ public class EventoService {
                 dto.getHora(),
                 dto.getLugar(),
                 categoriaOptional.get(),
-                dto.getDescripcion()
+                dto.getDescripcion(),
+                usuarioOptional.get()
         );
-
-
 
         // Guardar el evento
         evento = eventoRepository.saveAndFlush(evento);
@@ -150,6 +185,13 @@ public class EventoService {
 
         // Actualizar el evento
         Evento evento = eventoOptional.get();
+
+        // Verificar si el usuario asociado al evento es el mismo que el del DTO
+        if (!evento.getUsuario().getId().equals(dto.getUsuarioId())) {
+            logger.warn("El usuario no tiene permisos para actualizar este evento.");
+            return new ResponseEntity<>(new Message("No tienes permisos para actualizar este evento", TypesResponse.WARNING), HttpStatus.FORBIDDEN);
+        }
+
         evento.setNombre(dto.getNombre());
         evento.setFecha(dto.getFecha());
 

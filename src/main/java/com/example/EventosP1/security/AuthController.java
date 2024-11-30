@@ -26,13 +26,18 @@ public class AuthController {
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
         Optional<Usuario> usuarioOptional = usuarioRepository.findByCorreoElectronico(loginRequest.getCorreo());
 
-        // Verifica si el usuario existe
         if (usuarioOptional.isPresent()) {
             Usuario usuario = usuarioOptional.get();
 
             // Verifica la contraseña
             if (passwordEncoder.matches(loginRequest.getContrasena(), usuario.getContrasena())) {
-                String token = jwtUtil.generateToken(usuario.getCorreoElectronico(), usuario.getRol().name());
+                // Generar el token incluyendo el id y el status
+                String token = jwtUtil.generateToken(
+                        usuario.getCorreoElectronico(),
+                        usuario.getRol().name(),
+                        usuario.getId(),  // El ID del usuario
+                        usuario.isStatus()  // El estado del usuario
+                );
                 return ResponseEntity.ok(token);
             } else {
                 return ResponseEntity.status(401).body("Credenciales inválidas: Contraseña incorrecta");
@@ -41,6 +46,7 @@ public class AuthController {
             return ResponseEntity.status(401).body("Credenciales inválidas: Usuario no encontrado");
         }
     }
+
 
 
 }

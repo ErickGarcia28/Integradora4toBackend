@@ -21,15 +21,18 @@ public class JWTUtil {
         this.secretKey = Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    public String generateToken(String username, String role) {
+    public String generateToken(String correoElectronico, String rol, Long id, boolean status) {
         return Jwts.builder()
-                .setSubject(username)
-                .claim("role", role)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationInMs))
-                .signWith(secretKey)
+                .setSubject(correoElectronico)  // Usamos el correo como el "subject"
+                .claim("role", rol)  // Incluimos el rol
+                .claim("id", id)  // Incluimos el ID del usuario
+                .claim("status", status)  // Incluimos el estado (activo o inactivo)
+                .setIssuedAt(new Date())  // Fecha de emisión
+                .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationInMs))  // Expiración
+                .signWith(secretKey)  // Clave secreta para firmar el token
                 .compact();
     }
+
 
 
     public boolean validateToken(String token, String username) {
@@ -64,5 +67,23 @@ public class JWTUtil {
         System.out.println("Rol extraído del token: " + role); // Línea de depuración
         return role;
     }
+
+    public Long extractId(String token) {
+        return Jwts.parser()
+                .setSigningKey(secretKey)
+                .parseClaimsJws(token)
+                .getBody()
+                .get("id", Long.class);  // Cambiar a Long.class
+    }
+
+
+    public boolean extractStatus(String token) {
+        return Jwts.parser()
+                .setSigningKey(secretKey)
+                .parseClaimsJws(token)
+                .getBody()
+                .get("status", Boolean.class);  // Extraemos el estado del usuario
+    }
+
 
 }

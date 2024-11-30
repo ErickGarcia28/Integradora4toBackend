@@ -32,10 +32,22 @@ public class EventoDTO {
 
     @NotNull(groups = {Register.class, Modify.class, ChangeStatus.class}, message = "El estado no puede ser nulo.")
     private Boolean status;
+    @NotNull(groups = {Register.class, Modify.class}, message = "El ID del usuario no puede ser nulo.")
+    private Long usuarioId;  // El ID del usuario que crea o está asociado con el evento
+
 
     // Getters y Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
+
+    public Long getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Long usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+
 
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }

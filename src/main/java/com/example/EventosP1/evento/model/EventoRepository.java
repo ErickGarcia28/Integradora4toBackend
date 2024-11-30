@@ -8,6 +8,9 @@ import java.util.Optional;
 @Repository
 public interface EventoRepository extends JpaRepository<Evento, Long> {
     List<Evento> findAllByStatusIsTrue();
+    List<Evento> findAllByStatusIsTrueOrderByFechaAsc();  // Ordenado por fecha ascendente
     Optional<Evento> findByNombre(String nombre);
     Optional<Evento> findById(Long id);
+    List<Evento> findAllByUsuarioId(Long usuarioId);
+
 }

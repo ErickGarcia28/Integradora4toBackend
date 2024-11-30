@@ -2,6 +2,7 @@ package com.example.EventosP1.evento.model;
 
 import com.example.EventosP1.categoria.model.Categoria;
 import com.example.EventosP1.participante.model.Participante;
+import com.example.EventosP1.usuario.model.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDate;
@@ -41,10 +42,13 @@ public class Evento {
     @Column(name = "status", columnDefinition = "BOOL DEFAULT TRUE")
     private boolean status = true;
 
+    @ManyToOne()
+    private Usuario usuario;
+
     // Constructores
     public Evento() {}
 
-    public Evento(String nombre, LocalDate fecha, LocalTime hora, String lugar, Categoria categoria, String descripcion) {
+    public Evento(String nombre, LocalDate fecha, LocalTime hora, String lugar, Categoria categoria, String descripcion, Usuario usuario) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.hora = hora;  // Asignamos la hora
@@ -52,6 +56,7 @@ public class Evento {
         this.categoria = categoria;
         this.status = true;
         this.descripcion = descripcion;
+        this.usuario = usuario;
     }
 
     // Getters y Setters
@@ -81,4 +86,12 @@ public class Evento {
 
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }
