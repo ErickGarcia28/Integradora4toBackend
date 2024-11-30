@@ -45,6 +45,13 @@ public class UsuarioService {
         return new ResponseEntity<>(new Message(usuarios, "Listado de usuarios", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> findById(long id) {
+        logger.info("Iniciando búsqueda de usuario en concreto.");
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
+        return new ResponseEntity<>(new Message(usuario, "Usuario encontrado", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
     //CREAR UN USUARIO
     @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message> save(UsuarioDTO dto) {
@@ -95,7 +102,7 @@ public class UsuarioService {
 
     //ACTUALIZAR UN USUARIO
     @Transactional(rollbackFor = {SQLException.class})
-    public ResponseEntity<Message> update(UsuarioDTO dto) {
+    public ResponseEntity<Message> update(PerfilDTO dto) {
         logger.info("Iniciando actualización de usuario con ID: {}", dto.getId());
 
         Optional<Usuario> usuarioOptional = usuarioRepository.findById(dto.getId());
@@ -126,14 +133,6 @@ public class UsuarioService {
             logger.warn("El correo del usuario excede los 74 caracteres.");
             return new ResponseEntity<>(new Message("El correo excede el numero de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
-        if(dto.getContrasena().length() > 255) {
-            logger.warn("La contraseña del usuario excede los 255 caracteres.");
-            return new ResponseEntity<>(new Message("La contrasena excede el numero de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
-        }
-        if(dto.getContrasena().length() < 8) {
-            logger.warn("La contraseña debe tener por lo menos 8 caracteres");
-            return new ResponseEntity<>(new Message("La contraseña debe tener por lo menos 8 caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
-        }
         if (String.valueOf(dto.getTelefono()).length() != 10) {
             logger.warn("El teléfono del usuario no tiene exactamente 10 dígitos.");
             return new ResponseEntity<>(new Message("El teléfono debe tener exactamente 10 dígitos", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
@@ -145,13 +144,6 @@ public class UsuarioService {
         usuario.setApellido(dto.getApellido());
         usuario.setCorreoElectronico(dto.getCorreoElectronico());
         usuario.setTelefono(dto.getTelefono());
-
-        String encodedPassword = passwordEncoder.encode(dto.getContrasena());
-
-
-        usuario.setContrasena(encodedPassword);
-
-
 
         usuario = usuarioRepository.saveAndFlush(usuario);
         logger.info("Usuario con ID {} actualizado exitosamente.", usuario.getId());

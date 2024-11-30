@@ -1,10 +1,8 @@
 package com.example.EventosP1.evento.model;
 
-import com.example.EventosP1.categoria.model.Categoria;
-import com.example.EventosP1.participante.model.Participante;
 import jakarta.validation.constraints.*;
 import java.time.LocalDate;
-import java.util.List;
+import java.time.LocalTime;  // Importar LocalTime para la hora
 
 public class EventoDTO {
 
@@ -17,10 +15,13 @@ public class EventoDTO {
 
     @NotBlank(groups = {Register.class, Modify.class}, message = "La descripcion no puede estar vacía.")
     @Size(max = 300, groups = {Register.class, Modify.class}, message = "La descripcion no puede exceder los 300 caracteres.")
-    private String descripcioin;
+    private String descripcion;
 
     @NotNull(groups = {Register.class, Modify.class}, message = "La fecha no puede ser nula.")
     private LocalDate fecha;
+
+    @NotNull(groups = {Register.class, Modify.class}, message = "La hora no puede ser nula.")  // Validación para la hora
+    private LocalTime hora;  // Hora del evento
 
     @NotBlank(groups = {Register.class, Modify.class}, message = "El lugar no puede estar vacío.")
     @Size(max = 250, groups = {Register.class, Modify.class}, message = "El lugar no puede exceder los 250 caracteres.")
@@ -42,6 +43,9 @@ public class EventoDTO {
     public LocalDate getFecha() { return fecha; }
     public void setFecha(LocalDate fecha) { this.fecha = fecha; }
 
+    public LocalTime getHora() { return hora; }  // Getter para la hora
+    public void setHora(LocalTime hora) { this.hora = hora; }  // Setter para la hora
+
     public String getLugar() { return lugar; }
     public void setLugar(String lugar) { this.lugar = lugar; }
 
@@ -51,12 +55,14 @@ public class EventoDTO {
     public boolean isStatus() { return status; }
     public void setStatus(boolean status) { this.status = status; }
 
-    public @NotBlank(groups = {Register.class, Modify.class}, message = "La descripcion no puede estar vacía.") @Size(max = 300, groups = {Register.class, Modify.class}, message = "La descripcion no puede exceder los 300 caracteres.") String getDescripcioin() {
-        return descripcioin;
+    public String getDescripcion() {
+        return descripcion;
     }
-    public void setDescripcioin(@NotBlank(groups = {Register.class, Modify.class}, message = "La descripcion no puede estar vacía.") @Size(max = 300, groups = {Register.class, Modify.class}, message = "La descripcion no puede exceder los 300 caracteres.") String descripcioin) {
-        this.descripcioin = descripcioin;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
+
+
 
     // Interfaces para grupos de validación
     public interface Register {}

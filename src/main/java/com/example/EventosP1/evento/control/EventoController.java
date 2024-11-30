@@ -23,6 +23,11 @@ public class EventoController {
         return eventoService.findAll();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Message> getEventById(@PathVariable int id) {
+        return eventoService.findById(id);
+    }
+
     @GetMapping("/all-active")
     public ResponseEntity<Message> getAllActiveEvents() {
         return eventoService.findAllActive();

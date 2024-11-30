@@ -40,6 +40,15 @@ public class EventoService {
         return new ResponseEntity<>(new Message(eventos, "Listado de eventos", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> findById(long id) {
+        Optional<Evento> evento = eventoRepository.findById(id);
+        if(!evento.isPresent()) {
+            return new ResponseEntity<>(new Message(evento, "No se encontro el evento", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(new Message(evento, "Evento encontrado", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
     // CONSULTAR EVENTOS ACTIVOS
     @Transactional(readOnly = true)
     public ResponseEntity<Message> findAllActive() {
@@ -54,6 +63,7 @@ public class EventoService {
     public ResponseEntity<Message> save(EventoDTO dto) {
         logger.info("Iniciando registro de nuevo evento con nombre: {}", dto.getNombre());
 
+        // Validaciones de longitud
         if(dto.getNombre().length() > 200) {
             logger.warn("El nombre del evento excede los 200 caracteres.");
             return new ResponseEntity<>(new Message("El nombre excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
@@ -63,7 +73,7 @@ public class EventoService {
             return new ResponseEntity<>(new Message("El lugar excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
-        if(dto.getDescripcioin().length() > 300) {
+        if(dto.getDescripcion().length() > 300) {
             logger.warn("La descripcion del evento excede los 300 caracteres.");
             return new ResponseEntity<>(new Message("La descripcion excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
@@ -75,13 +85,30 @@ public class EventoService {
             return new ResponseEntity<>(new Message("Ya existe un evento con el mismo nombre", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
+        // Buscar la categoría
         Optional<Categoria> categoriaOptional = categoriaRepository.findById(dto.getCategoriaId());
         if (!categoriaOptional.isPresent()) {
             logger.warn("Categoría con ID {} no encontrada.", dto.getCategoriaId());
             return new ResponseEntity<>(new Message("Categoría no encontrada", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
         }
 
-        Evento evento = new Evento(dto.getNombre(), dto.getFecha(), dto.getLugar(), categoriaOptional.get(), dto.getDescripcioin());
+        // Asegurarse de que la hora no sea nula y asignarla si está presente
+        if (dto.getHora() == null) {
+            logger.warn("La hora no se ha proporcionado, se asignará la hora predeterminada.");
+        }
+        // Crear el evento con la hora
+        Evento evento = new Evento(
+                dto.getNombre(),
+                dto.getFecha(),
+                dto.getHora(),
+                dto.getLugar(),
+                categoriaOptional.get(),
+                dto.getDescripcion()
+        );
+
+
+
+        // Guardar el evento
         evento = eventoRepository.saveAndFlush(evento);
         logger.info("Evento con nombre '{}' registrado exitosamente.", evento.getNombre());
 
@@ -93,12 +120,14 @@ public class EventoService {
     public ResponseEntity<Message> update(EventoDTO dto) {
         logger.info("Iniciando actualización de evento con ID: {}", dto.getId());
 
+        // Buscar evento existente
         Optional<Evento> eventoOptional = eventoRepository.findById(dto.getId());
         if (!eventoOptional.isPresent()) {
             logger.warn("Evento con ID {} no encontrado.", dto.getId());
             return new ResponseEntity<>(new Message("Evento no encontrado", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
         }
 
+        // Validaciones de longitud
         if(dto.getNombre().length() > 200) {
             logger.warn("El nombre del evento excede los 200 caracteres.");
             return new ResponseEntity<>(new Message("El nombre excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
@@ -107,23 +136,35 @@ public class EventoService {
             logger.warn("El lugar del evento excede los 250 caracteres.");
             return new ResponseEntity<>(new Message("El lugar excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
-        if(dto.getDescripcioin().length() > 300) {
+        if(dto.getDescripcion().length() > 300) {
             logger.warn("La descripcion del evento excede los 300 caracteres.");
             return new ResponseEntity<>(new Message("La descripcion excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
+        // Buscar la categoría
         Optional<Categoria> categoriaOptional = categoriaRepository.findById(dto.getCategoriaId());
         if (!categoriaOptional.isPresent()) {
             logger.warn("Categoría con ID {} no encontrada.", dto.getCategoriaId());
             return new ResponseEntity<>(new Message("Categoría no encontrada", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
         }
 
+        // Actualizar el evento
         Evento evento = eventoOptional.get();
         evento.setNombre(dto.getNombre());
         evento.setFecha(dto.getFecha());
+
+        // Actualizar la hora si se ha proporcionado
+        if (dto.getHora() != null) {
+            evento.setHora(dto.getHora());
+        } else {
+            logger.warn("La hora no ha sido proporcionada para la actualización.");
+        }
+
         evento.setLugar(dto.getLugar());
         evento.setCategoria(categoriaOptional.get());
-        evento.setDescripcion(dto.getDescripcioin());
+        evento.setDescripcion(dto.getDescripcion());
+
+
 
         evento = eventoRepository.saveAndFlush(evento);
         logger.info("Evento con ID {} actualizado exitosamente.", evento.getId());

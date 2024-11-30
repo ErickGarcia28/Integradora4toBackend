@@ -5,6 +5,7 @@ import com.example.EventosP1.participante.model.Participante;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalTime;  // Importamos LocalTime para la hora
 import java.util.List;
 
 @Entity
@@ -24,6 +25,9 @@ public class Evento {
     @Column(name = "fecha", columnDefinition = "DATE", nullable = false)
     private LocalDate fecha;
 
+    @Column(name = "hora", columnDefinition = "TIME", nullable = false)  // Campo hora agregado
+    private LocalTime hora;
+
     @Column(name = "lugar", columnDefinition = "VARCHAR(250)", nullable = false)
     private String lugar;
 
@@ -40,9 +44,10 @@ public class Evento {
     // Constructores
     public Evento() {}
 
-    public Evento(String nombre, LocalDate fecha, String lugar, Categoria categoria, String descripcion) {
+    public Evento(String nombre, LocalDate fecha, LocalTime hora, String lugar, Categoria categoria, String descripcion) {
         this.nombre = nombre;
         this.fecha = fecha;
+        this.hora = hora;  // Asignamos la hora
         this.lugar = lugar;
         this.categoria = categoria;
         this.status = true;
@@ -59,6 +64,9 @@ public class Evento {
     public LocalDate getFecha() { return fecha; }
     public void setFecha(LocalDate fecha) { this.fecha = fecha; }
 
+    public LocalTime getHora() { return hora; }  // Getter para la hora
+    public void setHora(LocalTime hora) { this.hora = hora; }  // Setter para la hora
+
     public String getLugar() { return lugar; }
     public void setLugar(String lugar) { this.lugar = lugar; }
 
@@ -71,11 +79,6 @@ public class Evento {
     public List<Participante> getParticipantes() { return participantes; }
     public void setParticipantes(List<Participante> participantes) { this.participantes = participantes; }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+    public String getDescripcion() { return descripcion; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 }
-

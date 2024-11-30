@@ -36,6 +36,17 @@ public class CategoriaService {
         return new ResponseEntity<>(new Message(categorias, "Listado de categorías", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> findById(long id) {
+        logger.info("Iniciando búsqueda de la categoría.");
+        Optional<Categoria> categoria = categoriaRepository.findById(id);
+
+        if (!categoria.isPresent()) {
+            return new ResponseEntity<>(new Message( "No se encontro la categoria", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(new Message(categoria, "Categoria encontrada", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
     // CONSULTAR CATEGORIAS ACTIVAS
     @Transactional(readOnly = true)
     public ResponseEntity<Message> findAllActive() {

@@ -23,6 +23,11 @@ public class CategoriaController {
         return categoriaService.findAll();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Message> getCategoryById(@PathVariable long id) {
+        return categoriaService.findById(id);
+    }
+
     @GetMapping("/all-active")
     public ResponseEntity<Message> getAllActiveCategories() {
         return categoriaService.findAllActive();

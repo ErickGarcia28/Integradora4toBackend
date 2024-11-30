@@ -26,13 +26,18 @@ public class UsuarioController {
         return usuarioService.findAll();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Message> getById(@PathVariable long id) {
+        return usuarioService.findById(id);
+    }
+
     @PostMapping("/save")
     public ResponseEntity<Message> saveUser(@Validated(UsuarioDTO.Register.class) @RequestBody UsuarioDTO dto) {
         return usuarioService.save(dto);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Message> updateUser(@Validated(UsuarioDTO.Modify.class) @RequestBody UsuarioDTO dto) {
+    public ResponseEntity<Message> updateUser(@Validated(UsuarioDTO.Modify.class) @RequestBody PerfilDTO dto) {
         return usuarioService.update(dto);
     }
     @PutMapping("/update-profile")

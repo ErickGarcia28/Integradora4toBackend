@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface EventoRepository extends JpaRepository<Evento, Long> {
     List<Evento> findAllByStatusIsTrue();
     Optional<Evento> findByNombre(String nombre);
-
+    Optional<Evento> findById(Long id);
 }

@@ -18,7 +18,6 @@ public class CategoriaDTO {
     @Size(max = 300, groups = {Register.class, Modify.class}, message = "La descripción no puede exceder los 300 caracteres.")
     private String descripcion;
 
-    @NotNull(groups = {Register.class, Modify.class, ChangeStatus.class}, message = "El estado no puede ser nulo.")
     private Boolean status;
 
     // Getters y Setters
