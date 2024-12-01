@@ -10,6 +10,6 @@ import java.util.Optional;
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
     @Override
     Optional<Categoria> findById(Long id);
-
+    Optional<Categoria> findByNombre(String nombre);
     List<Categoria> findAllByStatusIsTrue();
 }

@@ -61,6 +61,16 @@ public class CategoriaService {
     public ResponseEntity<Message> save(CategoriaDTO dto) {
         logger.info("Iniciando registro de nueva categoría con nombre: {}", dto.getNombre());
 
+        if (dto.getNombre().length() == 0) {
+            logger.warn("El nombre de la categoría está vacío.");
+            return new ResponseEntity<>(new Message("El nombre no puede estar vacío", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+
+        if (dto.getDescripcion().length() == 0) {
+            logger.warn("La descripcion de la categoría está vacío.");
+            return new ResponseEntity<>(new Message("La descripcion no puede estar vacío", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+
         if(dto.getNombre().length() > 200) {
             logger.warn("El nombre de la categoría excede los 200 caracteres.");
             return new ResponseEntity<>(new Message("El nombre excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
@@ -68,6 +78,12 @@ public class CategoriaService {
         if(dto.getDescripcion().length() > 300) {
             logger.warn("La descripción de la categoría excede los 300 caracteres.");
             return new ResponseEntity<>(new Message("La descripción excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+
+        Optional<Categoria> categoriaExistente = categoriaRepository.findByNombre(dto.getNombre());
+        if (categoriaExistente.isPresent()) {
+            logger.warn("Ya existe una categoría con el nombre '{}'.", dto.getNombre());
+            return new ResponseEntity<>(new Message("El nombre de esa categoría ya está en uso", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
         Categoria categoria = new Categoria(dto.getNombre(), dto.getDescripcion());
