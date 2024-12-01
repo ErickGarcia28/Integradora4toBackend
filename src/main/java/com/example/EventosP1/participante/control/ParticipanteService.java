@@ -41,6 +41,27 @@ public class ParticipanteService {
         return new ResponseEntity<>(new Message(participantes, "Listado de participantes", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> findById(long id) {
+       Optional<Participante> participante = participanteRepository.findById(id);
+        return new ResponseEntity<>(new Message(participante, "Participante encontrado", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
+
+    public ResponseEntity<Message> findAllByEvento(long eventoId) {
+        List<Participante> participantes = participanteRepository.findAllByEventoId(eventoId);
+        if (participantes.isEmpty()) {
+            return new ResponseEntity<>(
+                    new Message(null, "No se encontraron participantes para este evento", TypesResponse.WARNING),
+                    HttpStatus.NOT_FOUND
+            );
+        }
+        return new ResponseEntity<>(
+                new Message(participantes, "Listado de participantes", TypesResponse.SUCCESS),
+                HttpStatus.OK
+        );
+    }
+
     // REGISTRAR PARTICIPANTE
     @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message> save(ParticipanteDTO dto) {
@@ -75,7 +96,7 @@ public class ParticipanteService {
         participante = participanteRepository.saveAndFlush(participante);
         logger.info("Participante con nombre '{}' registrado exitosamente.", participante.getNombre());
 
-        return new ResponseEntity<>(new Message(participante, "Registro exitoso", TypesResponse.SUCCESS), HttpStatus.CREATED);
+        return new ResponseEntity<>(new Message(participante, "Te registraste en el evento!", TypesResponse.SUCCESS), HttpStatus.CREATED);
     }
 
     // ACTUALIZAR PARTICIPANTE
@@ -106,18 +127,12 @@ public class ParticipanteService {
             return new ResponseEntity<>(new Message("La dirección excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
-        Optional<Evento> eventoOptional = eventoRepository.findById(dto.getEventoId());
-        if (!eventoOptional.isPresent()) {
-            logger.warn("Evento con ID {} no encontrado.", dto.getEventoId());
-            return new ResponseEntity<>(new Message("Evento no encontrado", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
-        }
 
         Participante participante = participanteOptional.get();
         participante.setNombre(dto.getNombre());
         participante.setApellido(dto.getApellido());
         participante.setTelefono(dto.getTelefono());
         participante.setCorreoElectronico(dto.getCorreoElectronico());
-        participante.setEvento(eventoOptional.get());
         participante.setDireccion(dto.getDireccion());
 
         participante = participanteRepository.saveAndFlush(participante);

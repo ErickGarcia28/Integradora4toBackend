@@ -23,6 +23,16 @@ public class ParticipanteController {
         return participanteService.findAll();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Message> getByiD(@PathVariable int id) {
+        return participanteService.findById(id);
+    }
+
+    @GetMapping("/get-by-eventId/{id}")
+    public ResponseEntity<Message> getAllParticipantsByEventId(@PathVariable long id) {
+        return participanteService.findAllByEvento(id);
+    }
+
     @PostMapping("/save")
     public ResponseEntity<Message> saveParticipant(@Validated(ParticipanteDTO.Register.class) @RequestBody ParticipanteDTO dto) {
         return participanteService.save(dto);

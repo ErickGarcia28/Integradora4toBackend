@@ -67,6 +67,8 @@ public class SecurityConfig {
                         // PARTICIPANTE
                         .requestMatchers("/participantes/all").hasAuthority("ADMIN")
                         .requestMatchers("/participantes/save").hasAuthority("ADMIN")
+                        .requestMatchers("/participantes/").hasAuthority("ADMIN")
+                        .requestMatchers("/participantes/get-by-eventId/{id}").hasAuthority("ADMIN")
                         .requestMatchers("/participantes/update").hasAuthority("ADMIN")
                         .requestMatchers("/participantes/change-status").hasAuthority("ADMIN")
 

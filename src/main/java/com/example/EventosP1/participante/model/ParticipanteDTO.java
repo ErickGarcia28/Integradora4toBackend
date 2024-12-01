@@ -25,14 +25,14 @@ public class ParticipanteDTO {
     @Size(max = 74, groups = {Register.class, Modify.class}, message = "El correo electrónico no puede exceder los 74 caracteres.")
     private String correoElectronico;
 
-    @NotNull(groups = {Register.class, Modify.class}, message = "El evento no puede ser nulo.")
+    @NotNull(groups = {Register.class}, message = "El evento no puede ser nulo.")
     private Long eventoId; // Evento relacionado
 
     @NotBlank(groups = {Register.class, Modify.class}, message = "La dirección no puede estar vacía.")
     @Size(max = 250, groups = {Register.class, Modify.class}, message = "La dirección no puede exceder los 250 caracteres.")
     private String direccion;
 
-    @NotNull(groups = {Register.class, Modify.class, ChangeStatus.class}, message = "El estado no puede ser nulo.")
+    @NotNull(groups = {Register.class,  ChangeStatus.class}, message = "El estado no puede ser nulo.")
     private Boolean status;
 
     // Getters y Setters
