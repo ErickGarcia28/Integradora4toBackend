@@ -59,6 +59,7 @@
                             .requestMatchers("/eventos/all-active").permitAll()
                             .requestMatchers("/eventos/all-ordered").permitAll()
                             .requestMatchers("/eventos/").permitAll()
+                            .requestMatchers("/eventos/*").permitAll()
                             .requestMatchers("/eventos/all").hasAuthority("ADMIN")
                             .requestMatchers("/eventos/save").hasAuthority("ADMIN")
                             .requestMatchers("/eventos/update").hasAuthority("ADMIN")
@@ -66,7 +67,7 @@
     
                             // PARTICIPANTE
                             .requestMatchers("/participantes/all").hasAuthority("ADMIN")
-                            .requestMatchers("/participantes/save").hasAuthority("ADMIN")
+                            .requestMatchers("/participantes/save").permitAll()
                             .requestMatchers("/participantes/").hasAuthority("ADMIN")
                             .requestMatchers("/participantes/get-by-eventId/{id}").hasAuthority("ADMIN")
                             .requestMatchers("/participantes/update").hasAuthority("ADMIN")
