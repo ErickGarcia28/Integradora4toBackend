@@ -50,12 +50,6 @@ public class EventoService {
 
         // Obtener los eventos del usuario
         List<Evento> eventos = eventoRepository.findAllByUsuarioId(usuarioId);
-
-        if (eventos.isEmpty()) {
-            logger.warn("No se encontraron eventos para el usuario con ID: {}", usuarioId);
-            return new ResponseEntity<>(new Message("No se encontraron eventos para el usuario", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
-        }
-
         logger.info("Se encontraron {} eventos para el usuario con ID: {}", eventos.size(), usuarioId);
         return new ResponseEntity<>(new Message(eventos, "Eventos encontrados para el usuario", TypesResponse.SUCCESS), HttpStatus.OK);
     }
