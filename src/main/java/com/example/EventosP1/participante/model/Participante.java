@@ -17,8 +17,8 @@ public class Participante {
     @Column(name = "apellido", columnDefinition = "VARCHAR(80)", nullable = false)
     private String apellido;
 
-    @Column(name = "telefono", columnDefinition = "INT", nullable = false)
-    private int telefono;
+    @Column(name = "telefono", columnDefinition = "BIGINT", nullable = false)
+    private long telefono;
 
     @Column(name = "correo_electronico", columnDefinition = "VARCHAR(74)", nullable = false, unique = true)
     private String correoElectronico;
@@ -35,7 +35,7 @@ public class Participante {
     // Constructores
     public Participante() {}
 
-    public Participante(String nombre, String apellido, int telefono, String correoElectronico, Evento evento, String direccion) {
+    public Participante(String nombre, String apellido, long telefono, String correoElectronico, Evento evento, String direccion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
@@ -55,8 +55,8 @@ public class Participante {
     public String getApellido() { return apellido; }
     public void setApellido(String apellido) { this.apellido = apellido; }
 
-    public int getTelefono() { return telefono; }
-    public void setTelefono(int telefono) { this.telefono = telefono; }
+    public long getTelefono() { return telefono; }
+    public void setTelefono(long telefono) { this.telefono = telefono; }
 
     public String getCorreoElectronico() { return correoElectronico; }
     public void setCorreoElectronico(String correoElectronico) { this.correoElectronico = correoElectronico; }

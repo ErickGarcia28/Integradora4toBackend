@@ -16685,3 +16685,444 @@
 2024-12-01T14:32:59.758-06:00  INFO 9904 --- [EventosP1] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-12-01T14:32:59.915-06:00  INFO 9904 --- [EventosP1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-12-01T14:33:00.009-06:00  INFO 9904 --- [EventosP1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-01T15:19:49.860-06:00  INFO 7064 --- [EventosP1] [main] c.e.EventosP1.EventosP1Application       : Starting EventosP1Application using Java 21.0.4 with PID 7064 (C:\ERICK\UTEZ\4TO CUATRI\IntegradoraAppsWebP1\EventosP1\target\classes started by eeeri in C:\ERICK\UTEZ\4TO CUATRI\IntegradoraAppsWebP1\EventosP1)
+2024-12-01T15:19:49.862-06:00  INFO 7064 --- [EventosP1] [main] c.e.EventosP1.EventosP1Application       : No active profile set, falling back to 1 default profile: "default"
+2024-12-01T15:19:50.574-06:00  INFO 7064 --- [EventosP1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-01T15:19:50.642-06:00  INFO 7064 --- [EventosP1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 4 JPA repository interfaces.
+2024-12-01T15:19:51.265-06:00  INFO 7064 --- [EventosP1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-01T15:19:51.278-06:00  INFO 7064 --- [EventosP1] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-01T15:19:51.279-06:00  INFO 7064 --- [EventosP1] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-12-01T15:19:51.338-06:00  INFO 7064 --- [EventosP1] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-01T15:19:51.338-06:00  INFO 7064 --- [EventosP1] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1427 ms
+2024-12-01T15:19:51.451-06:00  INFO 7064 --- [EventosP1] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-01T15:19:51.541-06:00  INFO 7064 --- [EventosP1] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-01T15:19:51.579-06:00  INFO 7064 --- [EventosP1] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-01T15:19:51.922-06:00  INFO 7064 --- [EventosP1] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-01T15:19:51.961-06:00  INFO 7064 --- [EventosP1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-01T15:19:52.473-06:00  INFO 7064 --- [EventosP1] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@54e0f76f
+2024-12-01T15:19:52.481-06:00  INFO 7064 --- [EventosP1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-01T15:19:52.606-06:00  WARN 7064 --- [EventosP1] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-01T15:19:52.607-06:00  WARN 7064 --- [EventosP1] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-01T15:19:53.743-06:00  INFO 7064 --- [EventosP1] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-01T15:19:53.854-06:00 DEBUG 7064 --- [EventosP1] [main] org.hibernate.SQL                        : alter table categorias modify column descripcion VARCHAR(300) not null
+2024-12-01T15:19:54.017-06:00 DEBUG 7064 --- [EventosP1] [main] org.hibernate.SQL                        : alter table categorias modify column nombre VARCHAR(200) not null
+2024-12-01T15:19:54.040-06:00 DEBUG 7064 --- [EventosP1] [main] org.hibernate.SQL                        : alter table eventos modify column descripcion VARCHAR(300) not null
+2024-12-01T15:19:54.070-06:00 DEBUG 7064 --- [EventosP1] [main] org.hibernate.SQL                        : alter table eventos modify column lugar VARCHAR(250) not null
+2024-12-01T15:19:54.100-06:00 DEBUG 7064 --- [EventosP1] [main] org.hibernate.SQL                        : alter table eventos modify column nombre VARCHAR(200) not null
+2024-12-01T15:19:54.215-06:00 DEBUG 7064 --- [EventosP1] [main] org.hibernate.SQL                        : alter table participantes modify column apellido VARCHAR(80) not null
+2024-12-01T15:19:54.239-06:00 DEBUG 7064 --- [EventosP1] [main] org.hibernate.SQL                        : alter table participantes modify column correo_electronico VARCHAR(74) not null
+2024-12-01T15:19:54.257-06:00 DEBUG 7064 --- [EventosP1] [main] org.hibernate.SQL                        : alter table participantes modify column direccion VARCHAR(250) not null
+2024-12-01T15:19:54.278-06:00 DEBUG 7064 --- [EventosP1] [main] org.hibernate.SQL                        : alter table participantes modify column nombre VARCHAR(50) not null
+2024-12-01T15:19:54.296-06:00 DEBUG 7064 --- [EventosP1] [main] org.hibernate.SQL                        : alter table usuarios modify column apellido VARCHAR(80) not null
+2024-12-01T15:19:54.322-06:00 DEBUG 7064 --- [EventosP1] [main] org.hibernate.SQL                        : alter table usuarios modify column code VARCHAR(6)
+2024-12-01T15:19:54.342-06:00 DEBUG 7064 --- [EventosP1] [main] org.hibernate.SQL                        : alter table usuarios modify column correo_electronico VARCHAR(74) not null
+2024-12-01T15:19:54.361-06:00 DEBUG 7064 --- [EventosP1] [main] org.hibernate.SQL                        : alter table usuarios modify column nombre VARCHAR(50) not null
+2024-12-01T15:19:54.434-06:00  INFO 7064 --- [EventosP1] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-01T15:19:55.085-06:00  WARN 7064 --- [EventosP1] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-01T15:19:55.112-06:00  INFO 7064 --- [EventosP1] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2024-12-01T15:19:55.274-06:00 DEBUG 7064 --- [EventosP1] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 32 mappings in 'requestMappingHandlerMapping'
+2024-12-01T15:19:55.379-06:00 DEBUG 7064 --- [EventosP1] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-01T15:19:55.429-06:00 DEBUG 7064 --- [EventosP1] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-12-01T15:19:55.551-06:00 DEBUG 7064 --- [EventosP1] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-01T15:19:55.597-06:00 DEBUG 7064 --- [EventosP1] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-01T15:19:55.723-06:00  INFO 7064 --- [EventosP1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-01T15:19:55.729-06:00  INFO 7064 --- [EventosP1] [main] c.e.EventosP1.EventosP1Application       : Started EventosP1Application in 6.268 seconds (process running for 6.905)
+2024-12-01T15:20:08.626-06:00  INFO 7064 --- [EventosP1] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-01T15:20:08.627-06:00  INFO 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-01T15:20:08.629-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-01T15:20:08.629-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-01T15:20:08.629-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-01T15:20:08.631-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7e2c8622
+2024-12-01T15:20:08.632-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@529fda9f
+2024-12-01T15:20:08.633-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-01T15:20:08.633-06:00  INFO 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2024-12-01T15:20:08.677-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /eventos/all-ordered
+2024-12-01T15:20:08.721-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /eventos/all-ordered
+2024-12-01T15:20:08.724-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/eventos/all-ordered", parameters={}
+2024-12-01T15:20:08.726-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.EventosP1.evento.control.EventoController#getAllOrderedEvents()
+2024-12-01T15:20:08.776-06:00  INFO 7064 --- [EventosP1] [http-nio-8080-exec-1] c.e.E.evento.control.EventoService       : Iniciando búsqueda de todos los eventos ordenados.
+2024-12-01T15:20:09.017-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] org.hibernate.SQL                        : select e1_0.id,e1_0.categoria_id,e1_0.descripcion,e1_0.fecha,e1_0.hora,e1_0.lugar,e1_0.nombre,e1_0.status,e1_0.usuario_id from eventos e1_0 where e1_0.status order by e1_0.fecha
+2024-12-01T15:20:09.035-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] org.hibernate.SQL                        : select c1_0.id,c1_0.descripcion,c1_0.nombre,c1_0.status from categorias c1_0 where c1_0.id=?
+2024-12-01T15:20:09.046-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.apellido,u1_0.code,u1_0.code_expiration,u1_0.contrasena,u1_0.correo_electronico,u1_0.nombre,u1_0.rol,u1_0.status,u1_0.telefono from usuarios u1_0 where u1_0.id=?
+2024-12-01T15:20:09.050-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] org.hibernate.SQL                        : select c1_0.id,c1_0.descripcion,c1_0.nombre,c1_0.status from categorias c1_0 where c1_0.id=?
+2024-12-01T15:20:09.053-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] org.hibernate.SQL                        : select c1_0.id,c1_0.descripcion,c1_0.nombre,c1_0.status from categorias c1_0 where c1_0.id=?
+2024-12-01T15:20:09.055-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.apellido,u1_0.code,u1_0.code_expiration,u1_0.contrasena,u1_0.correo_electronico,u1_0.nombre,u1_0.rol,u1_0.status,u1_0.telefono from usuarios u1_0 where u1_0.id=?
+2024-12-01T15:20:09.059-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] org.hibernate.SQL                        : select c1_0.id,c1_0.descripcion,c1_0.nombre,c1_0.status from categorias c1_0 where c1_0.id=?
+2024-12-01T15:20:09.061-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] org.hibernate.SQL                        : select u1_0.id,u1_0.apellido,u1_0.code,u1_0.code_expiration,u1_0.contrasena,u1_0.correo_electronico,u1_0.nombre,u1_0.rol,u1_0.status,u1_0.telefono from usuarios u1_0 where u1_0.id=?
+2024-12-01T15:20:09.067-06:00  INFO 7064 --- [EventosP1] [http-nio-8080-exec-1] c.e.E.evento.control.EventoService       : Se encontraron 8 eventos ordenados.
+2024-12-01T15:20:09.118-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-12-01T15:20:09.120-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.example.EventosP1.utils.Message@16416511]
+2024-12-01T15:20:09.146-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-01T15:20:09.147-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-01T15:20:10.926-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /eventos/5
+2024-12-01T15:20:10.930-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /eventos/5
+2024-12-01T15:20:10.930-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /eventos/5
+2024-12-01T15:20:10.930-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/eventos/5", parameters={}
+2024-12-01T15:20:10.930-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.EventosP1.evento.control.EventoController#getEventById(long)
+2024-12-01T15:20:10.959-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] org.hibernate.SQL                        : select e1_0.id,c1_0.id,c1_0.descripcion,c1_0.nombre,c1_0.status,e1_0.descripcion,e1_0.fecha,e1_0.hora,e1_0.lugar,e1_0.nombre,e1_0.status,u1_0.id,u1_0.apellido,u1_0.code,u1_0.code_expiration,u1_0.contrasena,u1_0.correo_electronico,u1_0.nombre,u1_0.rol,u1_0.status,u1_0.telefono from eventos e1_0 left join categorias c1_0 on c1_0.id=e1_0.categoria_id left join usuarios u1_0 on u1_0.id=e1_0.usuario_id where e1_0.id=?
+2024-12-01T15:20:10.963-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-12-01T15:20:10.963-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.example.EventosP1.utils.Message@4660fac]
+2024-12-01T15:20:10.963-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-01T15:20:10.963-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-01T15:20:12.252-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /participantes/get-by-eventId/5
+2024-12-01T15:20:12.259-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /participantes/get-by-eventId/5
+2024-12-01T15:20:12.370-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] org.hibernate.SQL                        : select u1_0.id,u1_0.apellido,u1_0.code,u1_0.code_expiration,u1_0.contrasena,u1_0.correo_electronico,u1_0.nombre,u1_0.rol,u1_0.status,u1_0.telefono from usuarios u1_0 where u1_0.correo_electronico=?
+2024-12-01T15:20:12.383-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /participantes/get-by-eventId/5
+2024-12-01T15:20:12.384-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/participantes/get-by-eventId/5", parameters={}
+2024-12-01T15:20:12.384-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.EventosP1.participante.control.ParticipanteController#getAllParticipantsByEventId(long)
+2024-12-01T15:20:12.386-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] org.hibernate.SQL                        : select p1_0.id,p1_0.apellido,p1_0.correo_electronico,p1_0.direccion,p1_0.evento_id,p1_0.nombre,p1_0.status,p1_0.telefono from participantes p1_0 where p1_0.evento_id=?
+2024-12-01T15:20:12.392-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] org.hibernate.SQL                        : select e1_0.id,c1_0.id,c1_0.descripcion,c1_0.nombre,c1_0.status,e1_0.descripcion,e1_0.fecha,e1_0.hora,e1_0.lugar,e1_0.nombre,e1_0.status,u1_0.id,u1_0.apellido,u1_0.code,u1_0.code_expiration,u1_0.contrasena,u1_0.correo_electronico,u1_0.nombre,u1_0.rol,u1_0.status,u1_0.telefono from eventos e1_0 left join categorias c1_0 on c1_0.id=e1_0.categoria_id left join usuarios u1_0 on u1_0.id=e1_0.usuario_id where e1_0.id=?
+2024-12-01T15:20:12.408-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-12-01T15:20:12.408-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.example.EventosP1.utils.Message@55986fd5]
+2024-12-01T15:20:12.412-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-01T15:20:38.031-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /participantes/save
+2024-12-01T15:20:38.036-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /participantes/save
+2024-12-01T15:20:38.037-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /participantes/save
+2024-12-01T15:20:38.037-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/participantes/save", parameters={}
+2024-12-01T15:20:38.037-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.EventosP1.participante.control.ParticipanteController#saveParticipant(ParticipanteDTO)
+2024-12-01T15:20:38.063-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.example.EventosP1.participante.model.ParticipanteDTO@4ab63318]
+2024-12-01T15:20:38.119-06:00  INFO 7064 --- [EventosP1] [http-nio-8080-exec-7] c.e.E.p.control.ParticipanteService      : Iniciando registro de nuevo participante con nombre: Erick
+2024-12-01T15:20:38.119-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-7] org.hibernate.SQL                        : select e1_0.id,c1_0.id,c1_0.descripcion,c1_0.nombre,c1_0.status,e1_0.descripcion,e1_0.fecha,e1_0.hora,e1_0.lugar,e1_0.nombre,e1_0.status,u1_0.id,u1_0.apellido,u1_0.code,u1_0.code_expiration,u1_0.contrasena,u1_0.correo_electronico,u1_0.nombre,u1_0.rol,u1_0.status,u1_0.telefono from eventos e1_0 left join categorias c1_0 on c1_0.id=e1_0.categoria_id left join usuarios u1_0 on u1_0.id=e1_0.usuario_id where e1_0.id=?
+2024-12-01T15:20:38.119-06:00  INFO 7064 --- [EventosP1] [http-nio-8080-exec-7] c.e.E.p.control.ParticipanteService      : Evento ID recibido: 5
+2024-12-01T15:20:38.136-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-7] org.hibernate.SQL                        : insert into participantes (apellido,correo_electronico,direccion,evento_id,nombre,status,telefono) values (?,?,?,?,?,?,?)
+2024-12-01T15:20:38.168-06:00  INFO 7064 --- [EventosP1] [http-nio-8080-exec-7] c.e.E.p.control.ParticipanteService      : Participante con nombre 'Erick' registrado exitosamente.
+2024-12-01T15:20:38.177-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-12-01T15:20:38.177-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.example.EventosP1.utils.Message@3354309a]
+2024-12-01T15:20:38.177-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED
+2024-12-01T15:20:38.177-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-01T15:20:39.361-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /eventos/all-ordered
+2024-12-01T15:20:39.361-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /eventos/all-ordered
+2024-12-01T15:20:39.361-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/eventos/all-ordered", parameters={}
+2024-12-01T15:20:39.361-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.EventosP1.evento.control.EventoController#getAllOrderedEvents()
+2024-12-01T15:20:39.368-06:00  INFO 7064 --- [EventosP1] [http-nio-8080-exec-9] c.e.E.evento.control.EventoService       : Iniciando búsqueda de todos los eventos ordenados.
+2024-12-01T15:20:39.375-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] org.hibernate.SQL                        : select e1_0.id,e1_0.categoria_id,e1_0.descripcion,e1_0.fecha,e1_0.hora,e1_0.lugar,e1_0.nombre,e1_0.status,e1_0.usuario_id from eventos e1_0 where e1_0.status order by e1_0.fecha
+2024-12-01T15:20:39.382-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] org.hibernate.SQL                        : select c1_0.id,c1_0.descripcion,c1_0.nombre,c1_0.status from categorias c1_0 where c1_0.id=?
+2024-12-01T15:20:39.382-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] org.hibernate.SQL                        : select u1_0.id,u1_0.apellido,u1_0.code,u1_0.code_expiration,u1_0.contrasena,u1_0.correo_electronico,u1_0.nombre,u1_0.rol,u1_0.status,u1_0.telefono from usuarios u1_0 where u1_0.id=?
+2024-12-01T15:20:39.390-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] org.hibernate.SQL                        : select c1_0.id,c1_0.descripcion,c1_0.nombre,c1_0.status from categorias c1_0 where c1_0.id=?
+2024-12-01T15:20:39.390-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] org.hibernate.SQL                        : select c1_0.id,c1_0.descripcion,c1_0.nombre,c1_0.status from categorias c1_0 where c1_0.id=?
+2024-12-01T15:20:39.397-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] org.hibernate.SQL                        : select u1_0.id,u1_0.apellido,u1_0.code,u1_0.code_expiration,u1_0.contrasena,u1_0.correo_electronico,u1_0.nombre,u1_0.rol,u1_0.status,u1_0.telefono from usuarios u1_0 where u1_0.id=?
+2024-12-01T15:20:39.401-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] org.hibernate.SQL                        : select c1_0.id,c1_0.descripcion,c1_0.nombre,c1_0.status from categorias c1_0 where c1_0.id=?
+2024-12-01T15:20:39.405-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] org.hibernate.SQL                        : select u1_0.id,u1_0.apellido,u1_0.code,u1_0.code_expiration,u1_0.contrasena,u1_0.correo_electronico,u1_0.nombre,u1_0.rol,u1_0.status,u1_0.telefono from usuarios u1_0 where u1_0.id=?
+2024-12-01T15:20:39.405-06:00  INFO 7064 --- [EventosP1] [http-nio-8080-exec-9] c.e.E.evento.control.EventoService       : Se encontraron 8 eventos ordenados.
+2024-12-01T15:20:39.410-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-12-01T15:20:39.410-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.example.EventosP1.utils.Message@62f5ed11]
+2024-12-01T15:20:39.413-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-01T15:20:39.413-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-01T15:24:08.803-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /eventos/5
+2024-12-01T15:24:08.805-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /eventos/5
+2024-12-01T15:24:08.805-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /eventos/5
+2024-12-01T15:24:08.805-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/eventos/5", parameters={}
+2024-12-01T15:24:08.805-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.EventosP1.evento.control.EventoController#getEventById(long)
+2024-12-01T15:24:08.810-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] org.hibernate.SQL                        : select e1_0.id,c1_0.id,c1_0.descripcion,c1_0.nombre,c1_0.status,e1_0.descripcion,e1_0.fecha,e1_0.hora,e1_0.lugar,e1_0.nombre,e1_0.status,u1_0.id,u1_0.apellido,u1_0.code,u1_0.code_expiration,u1_0.contrasena,u1_0.correo_electronico,u1_0.nombre,u1_0.rol,u1_0.status,u1_0.telefono from eventos e1_0 left join categorias c1_0 on c1_0.id=e1_0.categoria_id left join usuarios u1_0 on u1_0.id=e1_0.usuario_id where e1_0.id=?
+2024-12-01T15:24:08.810-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-12-01T15:24:08.810-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.example.EventosP1.utils.Message@34921844]
+2024-12-01T15:24:08.817-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-01T15:24:08.817-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-01T15:24:11.807-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /participantes/get-by-eventId/5
+2024-12-01T15:24:11.809-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /participantes/get-by-eventId/5
+2024-12-01T15:24:11.815-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] org.hibernate.SQL                        : select u1_0.id,u1_0.apellido,u1_0.code,u1_0.code_expiration,u1_0.contrasena,u1_0.correo_electronico,u1_0.nombre,u1_0.rol,u1_0.status,u1_0.telefono from usuarios u1_0 where u1_0.correo_electronico=?
+2024-12-01T15:24:11.824-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /participantes/get-by-eventId/5
+2024-12-01T15:24:11.824-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/participantes/get-by-eventId/5", parameters={}
+2024-12-01T15:24:11.824-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.EventosP1.participante.control.ParticipanteController#getAllParticipantsByEventId(long)
+2024-12-01T15:24:11.831-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] org.hibernate.SQL                        : select p1_0.id,p1_0.apellido,p1_0.correo_electronico,p1_0.direccion,p1_0.evento_id,p1_0.nombre,p1_0.status,p1_0.telefono from participantes p1_0 where p1_0.evento_id=?
+2024-12-01T15:24:11.837-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] org.hibernate.SQL                        : select e1_0.id,c1_0.id,c1_0.descripcion,c1_0.nombre,c1_0.status,e1_0.descripcion,e1_0.fecha,e1_0.hora,e1_0.lugar,e1_0.nombre,e1_0.status,u1_0.id,u1_0.apellido,u1_0.code,u1_0.code_expiration,u1_0.contrasena,u1_0.correo_electronico,u1_0.nombre,u1_0.rol,u1_0.status,u1_0.telefono from eventos e1_0 left join categorias c1_0 on c1_0.id=e1_0.categoria_id left join usuarios u1_0 on u1_0.id=e1_0.usuario_id where e1_0.id=?
+2024-12-01T15:24:11.841-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-12-01T15:24:11.841-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.example.EventosP1.utils.Message@ed803cc]
+2024-12-01T15:24:11.846-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-12-01T15:24:34.031-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /participantes/save
+2024-12-01T15:24:34.031-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /participantes/save
+2024-12-01T15:24:34.031-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /participantes/save
+2024-12-01T15:24:34.031-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/participantes/save", parameters={}
+2024-12-01T15:24:34.031-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.EventosP1.participante.control.ParticipanteController#saveParticipant(ParticipanteDTO)
+2024-12-01T15:24:34.039-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<com.example.EventosP1.utils.Message> com.example.EventosP1.participante.control.ParticipanteController.saveParticipant(com.example.EventosP1.participante.model.ParticipanteDTO): JSON parse error: Numeric value (7771486933) out of range of int (-2147483648 - 2147483647)
+2024-12-01T15:24:34.043-06:00  WARN 7064 --- [EventosP1] [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Numeric value (7771486933) out of range of int (-2147483648 - 2147483647)]
+2024-12-01T15:24:34.043-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-12-01T15:24:34.043-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-01T15:24:34.048-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /error
+2024-12-01T15:24:34.048-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-01T15:24:34.073-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.s.w.s.HttpSessionRequestCache        : Saved request http://localhost:8080/error?continue to session
+2024-12-01T15:24:34.073-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-5] o.s.s.w.a.Http403ForbiddenEntryPoint     : Pre-authenticated entry point called. Rejecting access
+2024-12-01T15:24:54.618-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /participantes/save
+2024-12-01T15:24:54.618-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /participantes/save
+2024-12-01T15:24:54.618-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /participantes/save
+2024-12-01T15:24:54.618-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/participantes/save", parameters={}
+2024-12-01T15:24:54.618-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.EventosP1.participante.control.ParticipanteController#saveParticipant(ParticipanteDTO)
+2024-12-01T15:24:54.636-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<com.example.EventosP1.utils.Message> com.example.EventosP1.participante.control.ParticipanteController.saveParticipant(com.example.EventosP1.participante.model.ParticipanteDTO): JSON parse error: Numeric value (9999999999) out of range of int (-2147483648 - 2147483647)
+2024-12-01T15:24:54.636-06:00  WARN 7064 --- [EventosP1] [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Numeric value (9999999999) out of range of int (-2147483648 - 2147483647)]
+2024-12-01T15:24:54.636-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-12-01T15:24:54.636-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-01T15:24:54.636-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /error
+2024-12-01T15:24:54.636-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-01T15:24:54.636-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.s.w.s.HttpSessionRequestCache        : Saved request http://localhost:8080/error?continue to session
+2024-12-01T15:24:54.636-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-9] o.s.s.w.a.Http403ForbiddenEntryPoint     : Pre-authenticated entry point called. Rejecting access
+2024-12-01T15:25:00.879-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /participantes/save
+2024-12-01T15:25:00.886-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /participantes/save
+2024-12-01T15:25:00.888-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /participantes/save
+2024-12-01T15:25:00.888-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/participantes/save", parameters={}
+2024-12-01T15:25:00.888-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.EventosP1.participante.control.ParticipanteController#saveParticipant(ParticipanteDTO)
+2024-12-01T15:25:00.888-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-10] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<com.example.EventosP1.utils.Message> com.example.EventosP1.participante.control.ParticipanteController.saveParticipant(com.example.EventosP1.participante.model.ParticipanteDTO): JSON parse error: Numeric value (3333333333) out of range of int (-2147483648 - 2147483647)
+2024-12-01T15:25:00.888-06:00  WARN 7064 --- [EventosP1] [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Numeric value (3333333333) out of range of int (-2147483648 - 2147483647)]
+2024-12-01T15:25:00.888-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-12-01T15:25:00.888-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-01T15:25:00.888-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /error
+2024-12-01T15:25:00.888-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-01T15:25:00.888-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-10] o.s.s.w.s.HttpSessionRequestCache        : Saved request http://localhost:8080/error?continue to session
+2024-12-01T15:25:00.888-06:00 DEBUG 7064 --- [EventosP1] [http-nio-8080-exec-10] o.s.s.w.a.Http403ForbiddenEntryPoint     : Pre-authenticated entry point called. Rejecting access
+2024-12-01T15:34:34.409-06:00  INFO 7064 --- [EventosP1] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-01T15:34:34.448-06:00  INFO 7064 --- [EventosP1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-01T15:34:34.487-06:00  INFO 7064 --- [EventosP1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-01T15:34:39.165-06:00  INFO 20276 --- [EventosP1] [main] c.e.EventosP1.EventosP1Application       : Starting EventosP1Application using Java 21.0.4 with PID 20276 (C:\ERICK\UTEZ\4TO CUATRI\IntegradoraAppsWebP1\EventosP1\target\classes started by eeeri in C:\ERICK\UTEZ\4TO CUATRI\IntegradoraAppsWebP1\EventosP1)
+2024-12-01T15:34:39.167-06:00  INFO 20276 --- [EventosP1] [main] c.e.EventosP1.EventosP1Application       : No active profile set, falling back to 1 default profile: "default"
+2024-12-01T15:34:39.800-06:00  INFO 20276 --- [EventosP1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-01T15:34:39.863-06:00  INFO 20276 --- [EventosP1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57 ms. Found 4 JPA repository interfaces.
+2024-12-01T15:34:40.384-06:00  INFO 20276 --- [EventosP1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-01T15:34:40.398-06:00  INFO 20276 --- [EventosP1] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-01T15:34:40.398-06:00  INFO 20276 --- [EventosP1] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-12-01T15:34:40.460-06:00  INFO 20276 --- [EventosP1] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-01T15:34:40.461-06:00  INFO 20276 --- [EventosP1] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1257 ms
+2024-12-01T15:34:40.610-06:00  INFO 20276 --- [EventosP1] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-01T15:34:40.700-06:00  INFO 20276 --- [EventosP1] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-01T15:34:40.747-06:00  INFO 20276 --- [EventosP1] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-01T15:34:41.070-06:00  INFO 20276 --- [EventosP1] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-01T15:34:41.102-06:00  INFO 20276 --- [EventosP1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-01T15:34:41.543-06:00  INFO 20276 --- [EventosP1] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@37cf91d8
+2024-12-01T15:34:41.544-06:00  INFO 20276 --- [EventosP1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-01T15:34:41.620-06:00  WARN 20276 --- [EventosP1] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-01T15:34:41.622-06:00  WARN 20276 --- [EventosP1] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-01T15:34:42.651-06:00  INFO 20276 --- [EventosP1] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-01T15:34:42.742-06:00 DEBUG 20276 --- [EventosP1] [main] org.hibernate.SQL                        : alter table categorias modify column descripcion VARCHAR(300) not null
+2024-12-01T15:34:42.813-06:00 DEBUG 20276 --- [EventosP1] [main] org.hibernate.SQL                        : alter table categorias modify column nombre VARCHAR(200) not null
+2024-12-01T15:34:42.840-06:00 DEBUG 20276 --- [EventosP1] [main] org.hibernate.SQL                        : alter table eventos modify column descripcion VARCHAR(300) not null
+2024-12-01T15:34:42.868-06:00 DEBUG 20276 --- [EventosP1] [main] org.hibernate.SQL                        : alter table eventos modify column lugar VARCHAR(250) not null
+2024-12-01T15:34:42.906-06:00 DEBUG 20276 --- [EventosP1] [main] org.hibernate.SQL                        : alter table eventos modify column nombre VARCHAR(200) not null
+2024-12-01T15:34:42.930-06:00 DEBUG 20276 --- [EventosP1] [main] org.hibernate.SQL                        : alter table participantes modify column apellido VARCHAR(80) not null
+2024-12-01T15:34:42.950-06:00 DEBUG 20276 --- [EventosP1] [main] org.hibernate.SQL                        : alter table participantes modify column correo_electronico VARCHAR(74) not null
+2024-12-01T15:34:42.972-06:00 DEBUG 20276 --- [EventosP1] [main] org.hibernate.SQL                        : alter table participantes modify column direccion VARCHAR(250) not null
+2024-12-01T15:34:42.991-06:00 DEBUG 20276 --- [EventosP1] [main] org.hibernate.SQL                        : alter table participantes modify column nombre VARCHAR(50) not null
+2024-12-01T15:34:43.013-06:00 DEBUG 20276 --- [EventosP1] [main] org.hibernate.SQL                        : alter table usuarios modify column apellido VARCHAR(80) not null
+2024-12-01T15:34:43.043-06:00 DEBUG 20276 --- [EventosP1] [main] org.hibernate.SQL                        : alter table usuarios modify column code VARCHAR(6)
+2024-12-01T15:34:43.071-06:00 DEBUG 20276 --- [EventosP1] [main] org.hibernate.SQL                        : alter table usuarios modify column correo_electronico VARCHAR(74) not null
+2024-12-01T15:34:43.094-06:00 DEBUG 20276 --- [EventosP1] [main] org.hibernate.SQL                        : alter table usuarios modify column nombre VARCHAR(50) not null
+2024-12-01T15:34:43.160-06:00  INFO 20276 --- [EventosP1] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-01T15:34:43.646-06:00  WARN 20276 --- [EventosP1] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-01T15:34:43.661-06:00  INFO 20276 --- [EventosP1] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2024-12-01T15:34:43.808-06:00 DEBUG 20276 --- [EventosP1] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 32 mappings in 'requestMappingHandlerMapping'
+2024-12-01T15:34:43.875-06:00 DEBUG 20276 --- [EventosP1] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-12-01T15:34:43.906-06:00 DEBUG 20276 --- [EventosP1] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-12-01T15:34:43.995-06:00 DEBUG 20276 --- [EventosP1] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-12-01T15:34:44.023-06:00 DEBUG 20276 --- [EventosP1] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-12-01T15:34:44.158-06:00  INFO 20276 --- [EventosP1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-01T15:34:44.164-06:00  INFO 20276 --- [EventosP1] [main] c.e.EventosP1.EventosP1Application       : Started EventosP1Application in 5.362 seconds (process running for 6.132)
+2024-12-01T15:34:52.346-06:00  INFO 20276 --- [EventosP1] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-01T15:34:52.347-06:00  INFO 20276 --- [EventosP1] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-01T15:34:52.348-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-12-01T15:34:52.348-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-12-01T15:34:52.348-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-12-01T15:34:52.350-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@696d28ee
+2024-12-01T15:34:52.350-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@6bab373c
+2024-12-01T15:34:52.350-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-12-01T15:34:52.351-06:00  INFO 20276 --- [EventosP1] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2024-12-01T15:34:52.369-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /participantes/save
+2024-12-01T15:34:52.395-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /participantes/save
+2024-12-01T15:34:52.400-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /participantes/save
+2024-12-01T15:34:52.401-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/participantes/save", parameters={}
+2024-12-01T15:34:52.403-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.EventosP1.participante.control.ParticipanteController#saveParticipant(ParticipanteDTO)
+2024-12-01T15:34:52.496-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.example.EventosP1.participante.model.ParticipanteDTO@31548e77]
+2024-12-01T15:34:52.565-06:00  INFO 20276 --- [EventosP1] [http-nio-8080-exec-3] c.e.E.p.control.ParticipanteService      : Iniciando registro de nuevo participante con nombre: Anacleto
+2024-12-01T15:34:52.611-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-3] org.hibernate.SQL                        : select e1_0.id,c1_0.id,c1_0.descripcion,c1_0.nombre,c1_0.status,e1_0.descripcion,e1_0.fecha,e1_0.hora,e1_0.lugar,e1_0.nombre,e1_0.status,u1_0.id,u1_0.apellido,u1_0.code,u1_0.code_expiration,u1_0.contrasena,u1_0.correo_electronico,u1_0.nombre,u1_0.rol,u1_0.status,u1_0.telefono from eventos e1_0 left join categorias c1_0 on c1_0.id=e1_0.categoria_id left join usuarios u1_0 on u1_0.id=e1_0.usuario_id where e1_0.id=?
+2024-12-01T15:34:52.634-06:00  INFO 20276 --- [EventosP1] [http-nio-8080-exec-3] c.e.E.p.control.ParticipanteService      : Evento ID recibido: 5
+2024-12-01T15:34:52.657-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-3] org.hibernate.SQL                        : insert into participantes (apellido,correo_electronico,direccion,evento_id,nombre,status,telefono) values (?,?,?,?,?,?,?)
+2024-12-01T15:34:52.686-06:00  WARN 20276 --- [EventosP1] [http-nio-8080-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1264, SQLState: 22001
+2024-12-01T15:34:52.687-06:00 ERROR 20276 --- [EventosP1] [http-nio-8080-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : Data truncation: Out of range value for column 'telefono' at row 1
+2024-12-01T15:34:52.697-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Failed to complete request: org.springframework.dao.DataIntegrityViolationException: could not execute statement [Data truncation: Out of range value for column 'telefono' at row 1] [insert into participantes (apellido,correo_electronico,direccion,evento_id,nombre,status,telefono) values (?,?,?,?,?,?,?)]; SQL [insert into participantes (apellido,correo_electronico,direccion,evento_id,nombre,status,telefono) values (?,?,?,?,?,?,?)]
+2024-12-01T15:34:52.699-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-01T15:34:52.700-06:00 ERROR 20276 --- [EventosP1] [http-nio-8080-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.DataIntegrityViolationException: could not execute statement [Data truncation: Out of range value for column 'telefono' at row 1] [insert into participantes (apellido,correo_electronico,direccion,evento_id,nombre,status,telefono) values (?,?,?,?,?,?,?)]; SQL [insert into participantes (apellido,correo_electronico,direccion,evento_id,nombre,status,telefono) values (?,?,?,?,?,?,?)]] with root cause
+
+com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'telefono' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:104) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1054) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1003) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1312) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:988) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.id.insert.GetGeneratedKeysDelegate.performMutation(GetGeneratedKeysDelegate.java:116) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:47) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:671) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:292) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:273) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:323) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:391) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:305) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:224) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.orm.jpa.ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler.invoke(ExtendedEntityManagerCreator.java:364) ~[spring-orm-6.1.13.jar:6.1.13]
+	at jdk.proxy2/jdk.proxy2.$Proxy122.persist(Unknown Source) ~[na:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:319) ~[spring-orm-6.1.13.jar:6.1.13]
+	at jdk.proxy2/jdk.proxy2.$Proxy122.persist(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:626) ~[spring-data-jpa-3.3.4.jar:3.3.4]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.saveAndFlush(SimpleJpaRepository.java:637) ~[spring-data-jpa-3.3.4.jar:3.3.4]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:277) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:516) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:285) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:628) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:173) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:148) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.13.jar:6.1.13]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:165) ~[spring-data-jpa-3.3.4.jar:3.3.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.13.jar:6.1.13]
+	at jdk.proxy2/jdk.proxy2.$Proxy134.saveAndFlush(Unknown Source) ~[na:na]
+	at com.example.EventosP1.participante.control.ParticipanteService.save(ParticipanteService.java:96) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.13.jar:6.1.13]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.13.jar:6.1.13]
+	at com.example.EventosP1.participante.control.ParticipanteService$$SpringCGLIB$$0.save(<generated>) ~[classes/:na]
+	at com.example.EventosP1.participante.control.ParticipanteController.saveParticipant(ParticipanteController.java:38) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.30.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.30.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at com.example.EventosP1.security.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:92) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-12-01T15:34:52.712-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /error
+2024-12-01T15:34:52.713-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-01T15:34:52.727-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-3] o.s.s.w.s.HttpSessionRequestCache        : Saved request http://localhost:8080/error?continue to session
+2024-12-01T15:34:52.727-06:00 DEBUG 20276 --- [EventosP1] [http-nio-8080-exec-3] o.s.s.w.a.Http403ForbiddenEntryPoint     : Pre-authenticated entry point called. Rejecting access
+2024-12-01T15:35:50.161-06:00  INFO 20276 --- [EventosP1] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-01T15:35:50.164-06:00  INFO 20276 --- [EventosP1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-01T15:35:50.172-06:00  INFO 20276 --- [EventosP1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

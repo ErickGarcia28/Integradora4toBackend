@@ -18,7 +18,7 @@ public class ParticipanteDTO {
     @NotNull(groups = {Register.class, Modify.class}, message = "El teléfono no puede ser nulo.")
     @Min(value = 1000000000, groups = {Register.class, Modify.class}, message = "El teléfono debe tener al menos 10 dígitos.")
     @Max(value = 9999999999L, groups = {Register.class, Modify.class}, message = "El teléfono no puede exceder los 10 dígitos.")
-    private Integer telefono;
+    private Long telefono;
 
     @NotBlank(groups = {Register.class, Modify.class}, message = "El correo electrónico no puede estar vacío.")
     @Email(groups = {Register.class, Modify.class}, message = "El correo electrónico debe ser válido.")
@@ -45,8 +45,8 @@ public class ParticipanteDTO {
     public String getApellido() { return apellido; }
     public void setApellido(String apellido) { this.apellido = apellido; }
 
-    public int getTelefono() { return telefono; }
-    public void setTelefono(int telefono) { this.telefono = telefono; }
+    public Long getTelefono() { return telefono; }
+    public void setTelefono(Long telefono) { this.telefono = telefono; }
 
     public String getCorreoElectronico() { return correoElectronico; }
     public void setCorreoElectronico(String correoElectronico) { this.correoElectronico = correoElectronico; }
