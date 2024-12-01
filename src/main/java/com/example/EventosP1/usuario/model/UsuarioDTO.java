@@ -73,4 +73,5 @@ public class UsuarioDTO {
     public interface ChangeStatus {}
     public interface FindByEmail {}
     public interface VerifyCode {}
+
 }

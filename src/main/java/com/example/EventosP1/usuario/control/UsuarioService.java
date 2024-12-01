@@ -271,10 +271,10 @@ public class UsuarioService {
     // RECUPERACIÓN DE LA CONTRASEÑA
 
     @Transactional(rollbackFor = {SQLException.class})
-    public ResponseEntity<Message> sendEmail(Usuario usuario) {
-        Optional<Usuario> optional = usuarioRepository.findFirstByCorreoElectronico(usuario.getCorreoElectronico());
+    public ResponseEntity<Message> sendEmail(String correo) {
+        Optional<Usuario> optional = usuarioRepository.findFirstByCorreoElectronico(correo);
         if (!optional.isPresent()) {
-            return new ResponseEntity<>(new Message("Usuario no encontrado", TypesResponse.WARNING), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new Message("No hay un usuario registrado con ese correo", TypesResponse.WARNING), HttpStatus.NOT_FOUND);
         }
 
         // Generar un código de 5 dígitos
@@ -291,19 +291,17 @@ public class UsuarioService {
                 "Solicitud de restablecimiento de contraseña",
                 "Tu código de verificación es: " + code);
 
-        return new ResponseEntity<>(new Message("Correo enviado", TypesResponse.SUCCESS), HttpStatus.OK);
+        return new ResponseEntity<>( new Message(usuarioObtenido,"Correo enviado", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
 
     @Transactional(readOnly = true)
-    public ResponseEntity<Message> verifyCode(Usuario usuario) {
-        Optional<Usuario> optional = usuarioRepository.findFirstByCorreoElectronicoAndCode(usuario.getCorreoElectronico(), usuario.getCode());
+    public ResponseEntity<Message> verifyCode(String codigo) {
+        Optional<Usuario> optional = usuarioRepository.findFirstByCode(codigo);
 
-        // Verifica si el usuario con el correo y el código existe
         if (!optional.isPresent()) {
             return new ResponseEntity<>(new Message("Código incorrecto o expirado", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
-
         Usuario usuarioObtenido = optional.get();
 
         logger.info("El usuario que se quiere verificar es: " + usuarioObtenido.getNombre());
@@ -315,7 +313,30 @@ public class UsuarioService {
             return new ResponseEntity<>(new Message("Código incorrecto o expirado", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
-        return new ResponseEntity<>(new Message("Código verificado correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
+        return new ResponseEntity<>(new Message(usuarioObtenido,"Código verificado correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
     }
+
+    @Transactional
+    public ResponseEntity<Message> updatePassword(String correo, String nuevaContrasena) {
+        Optional<Usuario> optional = usuarioRepository.findFirstByCorreoElectronico(correo);
+        if (!optional.isPresent()) {
+            return new ResponseEntity<>(new Message("Usuario no encontrado", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
+        logger.info("Si se encontro el usuario con el correo al cambiar la contra");
+        Usuario usuario = optional.get();
+
+        // Validar que la nueva contraseña cumple con los requisitos
+        if (nuevaContrasena.length() < 8) {
+            return new ResponseEntity<>(new Message("La contraseña debe tener al menos 8 caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+        if(nuevaContrasena.length() > 255) {
+            return new ResponseEntity<>(new Message("La contraseña excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+        String encodedPassword = passwordEncoder.encode(nuevaContrasena);
+        usuario.setContrasena(encodedPassword);
+        usuarioRepository.saveAndFlush(usuario);
+        return new ResponseEntity<>(new Message("Contraseña actualizada correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
 
 }
