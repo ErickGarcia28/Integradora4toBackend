@@ -47,6 +47,15 @@ public class ParticipanteService {
         return new ResponseEntity<>(new Message(participante, "Participante encontrado", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> findByEmail(String email) {
+        Optional<Participante> participante = participanteRepository.findByCorreoElectronico(email);
+        if(!participante.isPresent()) {
+            return new ResponseEntity<>(new Message(participante, "Participante no encontrado", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(new Message(participante, "Participante encontrado", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
 
     public ResponseEntity<Message> findAllByEvento(long eventoId) {
         List<Participante> participantes = participanteRepository.findAllByEventoId(eventoId);
@@ -82,6 +91,21 @@ public class ParticipanteService {
         if(dto.getDireccion().length() > 250) {
             logger.warn("La dirección del participante excede los 250 caracteres.");
             return new ResponseEntity<>(new Message("La dirección excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+
+        // Verificar si el teléfono ya está registrado
+        Optional<Participante> participanteExistenteTelefono = participanteRepository.findByTelefono(dto.getTelefono());
+        if (participanteExistenteTelefono.isPresent()) {
+            return new ResponseEntity<>(new Message("El teléfono ya está registrado", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
+        }
+        Optional<Participante> participanteExistenteCorreo = participanteRepository.findByCorreoElectronico(dto.getCorreoElectronico());
+        if (participanteExistenteCorreo.isPresent()) {
+            return new ResponseEntity<>(new Message("Ya hay un participante con ese correo", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
+        }
+
+        // Verificar si algún campo obligatorio está vacío
+        if (dto.getNombre().isEmpty() || dto.getApellido().isEmpty() || dto.getCorreoElectronico().isEmpty()) {
+        return new ResponseEntity<>(new Message("No puede haber campos vacíos", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
         }
 
         Optional<Evento> eventoOptional = eventoRepository.findById(dto.getEventoId());

@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -87,6 +88,13 @@ public class EventoService {
     public ResponseEntity<Message> save(EventoDTO dto) {
         logger.info("Iniciando registro de nuevo evento con nombre: {}", dto.getNombre());
 
+        Optional<Categoria> categoriaOptional = categoriaRepository.findById(dto.getCategoriaId());
+        if (!categoriaOptional.isPresent()) {
+            logger.warn("Categoría con ID {} no encontrada.", dto.getCategoriaId());
+            // Cambiar el código de respuesta a 400 en lugar de 404
+            return new ResponseEntity<>(new Message("Categoría no encontrada", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
+
         // Validaciones de longitud
         if(dto.getNombre().length() > 200) {
             logger.warn("El nombre del evento excede los 200 caracteres.");
@@ -97,6 +105,8 @@ public class EventoService {
             return new ResponseEntity<>(new Message("El lugar excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
+
+
         if(dto.getDescripcion().length() > 300) {
             logger.warn("La descripcion del evento excede los 300 caracteres.");
             return new ResponseEntity<>(new Message("La descripcion excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
@@ -105,16 +115,9 @@ public class EventoService {
         // Verificar si ya existe un evento con el mismo nombre
         Optional<Evento> eventoExistente = eventoRepository.findByNombre(dto.getNombre());
         if (eventoExistente.isPresent()) {
-            logger.warn("Ya existe un evento con el nombre '{}'.", dto.getNombre());
             return new ResponseEntity<>(new Message("Ya existe un evento con el mismo nombre", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
-        // Buscar la categoría
-        Optional<Categoria> categoriaOptional = categoriaRepository.findById(dto.getCategoriaId());
-        if (!categoriaOptional.isPresent()) {
-            logger.warn("Categoría con ID {} no encontrada.", dto.getCategoriaId());
-            return new ResponseEntity<>(new Message("Categoría no encontrada", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
-        }
 
         // Asegurarse de que la hora no sea nula y asignarla si está presente
         if (dto.getHora() == null) {
@@ -125,6 +128,21 @@ public class EventoService {
         if (!usuarioOptional.isPresent()) {
             return new ResponseEntity<>(new Message("El usuario no existe", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
+        if (dto.getHora() == null || dto.getNombre() == null || dto.getLugar() == null || dto.getDescripcion() == null || dto.getFecha() == null) {
+            logger.warn("No puede haber campos vacíos");
+            return new ResponseEntity<>(new Message("No puede haber campos vacíos", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+
+
+        if (dto.getFecha().isBefore(LocalDate.now())) {
+            logger.warn("La fecha del evento no puede ser previo al año actual.");
+            return new ResponseEntity<>(new Message("La fecha no puede ser mayor al año actual.", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+
+        if (!categoriaOptional.isPresent()) {
+            return new ResponseEntity<>(new Message("Categoría no encontrada", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
+
 
         // Crear el evento con la hora
         Evento evento = new Evento(

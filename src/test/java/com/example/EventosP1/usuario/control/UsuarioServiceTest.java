@@ -48,35 +48,27 @@ public class UsuarioServiceTest {
 
     @Test
     public void testRegistrarUsuarioSuccessCP_U001() {
-        // Arrange
         when(usuarioRepository.existsByCorreoElectronico(validUsuarioDTO.getCorreoElectronico())).thenReturn(false);
         when(passwordEncoder.encode(validUsuarioDTO.getContrasena())).thenReturn("encodedPassword");
         when(usuarioRepository.saveAndFlush(any(Usuario.class))).thenReturn(new Usuario(validUsuarioDTO.getNombre(), validUsuarioDTO.getApellido(), validUsuarioDTO.getCorreoElectronico(), validUsuarioDTO.getTelefono(), "encodedPassword", Rol.ADMIN));
 
-        // Act
         ResponseEntity<Message> response = usuarioService.save(validUsuarioDTO);
 
-        // Assert
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         assertEquals("Registro exitoso", response.getBody().getText());
     }
 
     @Test
     public void testRegistrarUsuarioCorreoExistenteCP_U002() {
-        // Arrange
         when(usuarioRepository.existsByCorreoElectronico(validUsuarioDTO.getCorreoElectronico())).thenReturn(true);
-
-        // Act
         ResponseEntity<Message> response = usuarioService.save(validUsuarioDTO);
 
-        // Assert
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         assertEquals("El correo electrónico ya está en uso", response.getBody().getText());
     }
 
     @Test
     public void testRegistrarUsuarioConCamposVaciosCP_U004() {
-        // Arrange
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         usuarioDTO.setNombre(" ");
         usuarioDTO.setApellido("Doe");
@@ -84,17 +76,14 @@ public class UsuarioServiceTest {
         usuarioDTO.setTelefono(7771523544L);
         usuarioDTO.setContrasena("12345678");
 
-        // Act
         ResponseEntity<Message> response = usuarioService.save(usuarioDTO);
 
-        // Assert
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         assertEquals("El nombre no puede estar vacio", response.getBody().getText());
     }
 
     @Test
     public void testRegistrarUsuarioTelefonoInvalidoCP_U005() {
-        // Arrange
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         usuarioDTO.setNombre("Jane");
         usuarioDTO.setApellido("Doe");
@@ -102,17 +91,14 @@ public class UsuarioServiceTest {
         usuarioDTO.setTelefono(777732);
         usuarioDTO.setContrasena("12345678");
 
-        // Act
         ResponseEntity<Message> response = usuarioService.save(usuarioDTO);
 
-        // Assert
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         assertEquals("El teléfono debe tener exactamente 10 dígitos", response.getBody().getText());
     }
 
     @Test
     public void testRegistrarUsuarioConContrasenaInvalidaCP_U006() {
-        // Arrange
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         usuarioDTO.setNombre("Jane");
         usuarioDTO.setApellido("Doe");
@@ -120,10 +106,8 @@ public class UsuarioServiceTest {
         usuarioDTO.setTelefono(7771486939L);
         usuarioDTO.setContrasena("123");
 
-        // Act
         ResponseEntity<Message> response = usuarioService.save(usuarioDTO);
 
-        // Assert
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         assertEquals("La contraseña debe tener por lo menos 8 caracteres", response.getBody().getText());
     }
