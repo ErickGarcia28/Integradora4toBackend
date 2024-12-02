@@ -14,9 +14,7 @@
     import org.springframework.web.cors.CorsConfiguration;
     import org.springframework.web.cors.CorsConfigurationSource;
     import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-    
     import java.util.List;
-    
     @Configuration
     @EnableWebSecurity
     public class SecurityConfig {
@@ -46,7 +44,7 @@
                             .requestMatchers("/usuarios/update").hasAuthority("SUPERADMIN")
                             .requestMatchers("/usuarios/change-status").hasAuthority("SUPERADMIN")
                             .requestMatchers("/usuarios/update-profile").hasAnyAuthority("SUPERADMIN", "ADMIN")
-    
+
                             // CATEGORIAS
                             .requestMatchers("/categorias/all-active").hasAnyAuthority("SUPERADMIN", "ADMIN")
                             .requestMatchers("/categorias/").hasAnyAuthority("SUPERADMIN", "ADMIN")
@@ -59,11 +57,13 @@
                             .requestMatchers("/eventos/all-active").permitAll()
                             .requestMatchers("/eventos/all-ordered").permitAll()
                             .requestMatchers("/eventos/").permitAll()
+                            .requestMatchers("/eventos/all-by-user-id-active").permitAll()
                             .requestMatchers("/eventos/*").permitAll()
                             .requestMatchers("/eventos/all").hasAuthority("ADMIN")
                             .requestMatchers("/eventos/save").hasAuthority("ADMIN")
                             .requestMatchers("/eventos/update").hasAuthority("ADMIN")
                             .requestMatchers("/eventos/change-status").hasAuthority("ADMIN")
+
     
                             // PARTICIPANTE
                             .requestMatchers("/participantes/all").hasAuthority("ADMIN")

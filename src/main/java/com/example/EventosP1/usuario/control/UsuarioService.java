@@ -337,6 +337,4 @@ public class UsuarioService {
         usuarioRepository.saveAndFlush(usuario);
         return new ResponseEntity<>(new Message("Contraseña actualizada correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
     }
-
-
 }

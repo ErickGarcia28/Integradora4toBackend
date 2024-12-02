@@ -33,6 +33,12 @@ public class EventoController {
         return eventoService.findAllByUsuarioId(userId);
     }
 
+    @GetMapping("/all-by-user-id-active/{userId}")
+    public ResponseEntity<Message> getAllByUserIdActive(@PathVariable long userId) {
+        return eventoService.findAllByUsuarioIdActives(userId);
+    }
+
+
     @GetMapping("/{id}")
     public ResponseEntity<Message> getEventById(@PathVariable long id) {
         return eventoService.findById(id);

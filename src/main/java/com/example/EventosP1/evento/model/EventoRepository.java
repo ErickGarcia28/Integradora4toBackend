@@ -11,6 +11,8 @@ public interface EventoRepository extends JpaRepository<Evento, Long> {
     List<Evento> findAllByStatusIsTrueOrderByFechaAsc();  // Ordenado por fecha ascendente
     Optional<Evento> findByNombre(String nombre);
     Optional<Evento> findById(Long id);
+
     List<Evento> findAllByUsuarioId(Long usuarioId);
+    List<Evento> findAllByUsuarioIdAndStatusIsTrue(Long usuarioId);
 
 }

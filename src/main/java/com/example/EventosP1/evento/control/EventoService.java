@@ -55,6 +55,29 @@ public class EventoService {
         return new ResponseEntity<>(new Message(eventos, "Eventos encontrados para el usuario", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> findAllByUsuarioIdActives(Long usuarioId) {
+        logger.info("Iniciando búsqueda de eventos para el usuario con ID: {}", usuarioId);
+
+        try {
+            // Obtener los eventos del usuario
+            List<Evento> eventos = eventoRepository.findAllByUsuarioIdAndStatusIsTrue(usuarioId);
+
+            if (eventos.isEmpty()) {
+                logger.info("No se encontraron eventos activos para el usuario con ID: {}", usuarioId);
+                return new ResponseEntity<>(new Message(null, "No se encontraron eventos activos para el usuario", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+            }
+
+            logger.info("Se encontraron {} eventos activos para el usuario con ID: {}", eventos.size(), usuarioId);
+            return new ResponseEntity<>(new Message(eventos, "Eventos activos encontrados para el usuario", TypesResponse.SUCCESS), HttpStatus.OK);
+
+        } catch (Exception e) {
+            logger.error("Error al intentar obtener eventos activos para el usuario con ID: {}", usuarioId, e);
+            return new ResponseEntity<>(new Message(null, "Error al procesar la solicitud", TypesResponse.ERROR), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
 
     // CONSULTAR EVENTOS
     @Transactional(readOnly = true)
@@ -142,7 +165,6 @@ public class EventoService {
         if (!categoriaOptional.isPresent()) {
             return new ResponseEntity<>(new Message("Categoría no encontrada", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
         }
-
 
         // Crear el evento con la hora
         Evento evento = new Evento(
