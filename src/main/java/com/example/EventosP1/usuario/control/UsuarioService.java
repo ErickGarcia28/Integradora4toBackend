@@ -113,13 +113,16 @@ public class UsuarioService {
 
         Usuario usuario = usuarioOptional.get();
 
-        // Validación de correo electrónico
+
         if (!usuario.getCorreoElectronico().equals(dto.getCorreoElectronico())) {
-            if (usuarioRepository.existsByCorreoElectronico(dto.getCorreoElectronico())) {
+            if (usuarioRepository.existsByCorreoElectronicoAndIdNot(dto.getCorreoElectronico(), dto.getId())) {
                 logger.warn("El correo electrónico {} ya está en uso por otro usuario.", dto.getCorreoElectronico());
                 return new ResponseEntity<>(new Message("El correo electrónico ya está en uso por otro usuario", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
             }
         }
+
+
+
         // Validación de longitud de los campos
         if(dto.getNombre().length() > 50) {
             logger.warn("El nombre del usuario excede los 50 caracteres.");

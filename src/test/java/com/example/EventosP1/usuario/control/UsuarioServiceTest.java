@@ -111,4 +111,5 @@ public class UsuarioServiceTest {
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         assertEquals("La contraseña debe tener por lo menos 8 caracteres", response.getBody().getText());
     }
+
 }

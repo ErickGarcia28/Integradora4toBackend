@@ -82,21 +82,21 @@
                     .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class); // Agregar filtro JWT
             return http.build();
         }
-    
+
         @Bean
         public CorsConfigurationSource corsConfigurationSource() {
             CorsConfiguration configuration = new CorsConfiguration();
-            configuration.setAllowedOrigins(List.of("http://127.0.0.1:5501", "http://localhost:5501")); // Orígenes permitidos
-            configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH")); // Métodos permitidos
+            configuration.setAllowedOriginPatterns(List.of("*")); // Permitir todos los orígenes mediante patrones
+            configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
             configuration.setAllowedHeaders(List.of("*")); // Permitir todos los encabezados
-            configuration.setAllowCredentials(true); // Permitir credenciales como cookies o tokens
-    
+            configuration.setAllowCredentials(true); // Permitir credenciales
             UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
             source.registerCorsConfiguration("/**", configuration);
-    
             return source;
         }
-    
+
+
+
         @Bean
         public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
             return configuration.getAuthenticationManager();

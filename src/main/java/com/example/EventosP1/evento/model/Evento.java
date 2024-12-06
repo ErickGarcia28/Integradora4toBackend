@@ -6,13 +6,11 @@ import com.example.EventosP1.usuario.model.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalTime;  // Importamos LocalTime para la hora
+import java.time.LocalTime;
 import java.util.List;
-
 @Entity
 @Table(name = "eventos")
 public class Evento {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
