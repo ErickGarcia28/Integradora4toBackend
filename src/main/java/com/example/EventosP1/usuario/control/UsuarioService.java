@@ -90,6 +90,11 @@ public class UsuarioService {
         }
 
 
+        // Validar si el teléfono ya existe
+        if (usuarioRepository.existsByTelefono(dto.getTelefono())) {
+            return new ResponseEntity<>(new Message("El teléfono ya está en uso", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
+        }
+
         // Encripta la contraseña antes de guardar
         String encodedPassword = passwordEncoder.encode(dto.getContrasena());
 

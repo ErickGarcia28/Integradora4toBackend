@@ -68,6 +68,28 @@ public class UsuarioServiceTest {
     }
 
     @Test
+    public void testRegistrarUsuarioTelefonoExistenteCP_U003() {
+        // Crear los datos del usuario existente
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
+        usuarioDTO.setNombre("Jane");
+        usuarioDTO.setApellido("Doe");
+        usuarioDTO.setCorreoElectronico("johndoe@example.com");
+        usuarioDTO.setTelefono(7771523546L); // Teléfono ya existente
+        usuarioDTO.setContrasena("12345678");
+
+        // Simular que el teléfono ya existe
+        when(usuarioRepository.existsByTelefono(usuarioDTO.getTelefono())).thenReturn(true);
+
+        // Llamar al método que se desea probar
+        ResponseEntity<Message> response = usuarioService.save(usuarioDTO);
+
+        // Verificar los resultados esperados
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertEquals("El teléfono ya está en uso", response.getBody().getText());
+    }
+
+
+    @Test
     public void testRegistrarUsuarioConCamposVaciosCP_U004() {
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         usuarioDTO.setNombre(" ");
